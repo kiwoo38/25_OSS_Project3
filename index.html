@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/my.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="header container py-3">
+    <div class="company fw-bold fs-4">Kream</div>
+    <div class="topmenu d-flex gap-3">
+      <a href="#" class="link-secondary link-dark text-decoration-none" >Home</a>
+      <a class="link-secondary link-dark text-decoration-none" href="#">Style</a>
+      <a class="link-primary link-dark text-decoration-none fw-semibold" href="#">Shop</a>
+      <a class="link-secondary link-dark text-decoration-none" href="#">Search</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 class="page-title h4 mb-3">Cart List</h1>
+
+    <div class="function d-flex flex-wrap gap-2 mb-3">
+      <select class="form-select" style="width:180px">
+        <option value="">전체</option>
+        <option>신발</option><option>아우터</option><option>상의</option>
+        <option>하의</option><option>가방</option>
+      </select>
+      <input class="form-control" placeholder="상품명" style="width:220px">
+      <button class="btn btn-primary">Search</button>
+      <a class="btn btn-success" href="./board/add.html">Add</a>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle text-center">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>상품명</th>
+                <th>사이즈</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>날짜</th>
+                <th>메뉴</th>
+              </tr>
+            </thead>
+
+            <tr>
+              <td>1</td>
+              <td>Birkenstock</td>
+              <td>260</td>
+              <td>₩ 179,000</td>
+              <td>1</td>
+              <td>2025-09-19</td>
+              <td class="d-flex justify-content-center gap-2">
+                <a class="btn btn-sm btn-outline-dark btn-icon" href="./board/edit.html">
+                    <img src ="img/pencil.png" alt="" width="16" height="16" >
+                </a>
+                <a class="btn btn-sm btn-outline-dark btn-icon" href="./board/view.html">
+                    <img src="img/magnifying.png" alt="" width="16" height="16">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center mb-0">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

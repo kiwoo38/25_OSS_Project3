@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Capture vs Bubble</title>
+</head>
+<body>
+  <h3>클릭 순서 확인하기</h3>
+  <div id="parent" style="padding:20px; border:2px solid green;">
+    Parent
+    <button id="child" style="padding:10px;">Child Button</button>
+  </div>
+
+  <h4>실행 순서:</h4>
+  <ul id="log"></ul>
+
+  <script>
+    const parent = document.getElementById("parent");
+    const child = document.getElementById("child");
+    const log = document.getElementById("log");
+
+    function addLog(text, color) {
+      const li = document.createElement("li");
+      li.textContent = text;
+      li.style.color = color;
+      log.appendChild(li);
+    }
+
+    // 부모 - 캡처링
+    parent.addEventListener("click", () => {
+      addLog("Parent (캡처링)", "blue");
+    }, true);
+
+    // 부모 - 버블링
+    parent.addEventListener("click", () => {
+      addLog("Parent (버블링)", "red");
+    }, false);
+
+    // 자식
+    child.addEventListener("click", () => {
+      addLog("Child", "black");
+    });
+  </script>
+</body>
+</html>
