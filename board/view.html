@@ -52,6 +52,21 @@
 
     const detail = document.getElementById('detail');
     const editBtn = document.getElementById('editBtn');
+    
+      const priceText = '₩ ' + item.price.toLocaleString('ko-KR');
+
+    detail.innerHTML = `
+        <dl class="row mb-0">
+          <dt class="col-sm-3">상품명</dt><dd class="col-sm-9">${item.name}</dd>
+          <dt class="col-sm-3">카테고리</dt><dd class="col-sm-9">${item.category}</dd>
+          <dt class="col-sm-3">사이즈</dt><dd class="col-sm-9">${item.size}</dd>
+          <dt class="col-sm-3">가격</dt><dd class="col-sm-9">${priceText}</dd>
+          <dt class="col-sm-3">수량</dt><dd class="col-sm-9">${item.qty}</dd>
+          <dt class="col-sm-3">담은 날짜</dt><dd class="col-sm-9">${item.date}</dd>
+        </dl>
+      `;
+
+      editBtn.href = `./edit.html?id=${item.id}`;
 
     
 
