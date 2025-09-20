@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload =function(){
+            const input=document.getElementById("fruit");
+            const addBtn=document.getElementById("addBtn");
+            const deleteBtn=document.getElementById("deleteBtn");
+            const list=document.getElementById("fruitList");
+
+            addBtn.addEventListener("click",function(){
+                const fruits=input.value.split(",");
+                
+                for(let i=0; i<fruits.length;i++){
+                    const li= document.createElement("li");
+                    li.textContent=fruits[i].trim();
+                    list.appendChild(li);
+                }
+                input.value="";
+            })
+
+            deleteBtn.addEventListener("click",function(){
+                list.innerHTML="";
+            });
+        }
+
+    </script>
+</head>
+<style>
+    #addBtn{
+        background-color: blue;
+        color: white;
+    }
+    #deleteBtn{
+        background-color: rgb(17, 166, 17);
+        color: white;
+    }
+</style>
+<body>
+    <h2>Dynamic Web page</h2>
+    <input type="text" id="fruit">
+    <button id="addBtn">추가</button>
+    <button id="deleteBtn">삭제</button>
+    <ul id="fruitList"></ul>
+    <a href="../index.html">Home</a>
+    
+</body>
+</html>
