@@ -8,7 +8,7 @@
   <link href="../css/my.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-  <!-- 헤더 (index와 톤 맞춤) -->
+
   <div class="header container py-3">
     <div class="company fw-bold fs-4">Kream</div>
     <div class="topmenu d-flex gap-3">
@@ -22,8 +22,8 @@
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1 class="page-title h4 mb-0">Cart Detail</h1>
-      <div class="d-flex gap-2">
-        <a class="btn btn-outline-secondary" href="../index.html">목록</a>
+      <div class="d-flex gap-1">
+        <a class="btn btn-info text-white" href="../index.html">목록</a>
         <a class="btn btn-primary" id="editBtn" href="./edit.html">Edit</a>
         <button class="btn btn-danger" id="deleteBtn">Delete</button>
       </div>
@@ -31,59 +31,30 @@
 
     <div class="card shadow-sm">
       <div class="card-body" id="detail">
-        <!-- JS가 여기 내용을 채웁니다 -->
       </div>
     </div>
   </div>
 
   <script>
-    // 1) index의 더미 데이터와 동일하게 준비 (id는 1~6)
     const ITEMS = [
-      { id:1, name:'Birkenstock', category:'신발', size:'260', price:179000, qty:1, date:'2025-08-01' },
-      { id:2, name:'Vans Knu-Skool', category:'신발', size:'230', price:57000,  qty:1, date:'2025-08-10' },
-      { id:3, name:'Asics Gel-1130', category:'신발', size:'270', price:101000, qty:1, date:'2025-08-18' },
-      { id:4, name:'Dr. Martens 1461', category:'신발', size:'255', price:148000, qty:1, date:'2025-08-25' },
-      { id:5, name:'Stussy Pigment', category:'상의', size:'L',   price:73000,  qty:1, date:'2025-09-10' },
-      { id:6, name:'Adidas Arsenal 2025/26 3rd', category:'상의', size:'L', price:180000, qty:1, date:'2025-09-19' },
+      {id:1, name:'Birkenstock', category:'신발', size:'260', price:179000, qty:1, date:'2025-08-01'},
+      {id:2, name:'Vans Knu-Skool', category:'신발', size:'230', price:57000,  qty:1, date:'2025-08-10'},
+      {id:3, name:'Asics Gel-1130', category:'신발', size:'270', price:101000, qty:1, date:'2025-08-18'},
+      {id:4, name:'Dr. Martens 1461', category:'신발', size:'255', price:148000, qty:1, date:'2025-08-25'},
+      {id:5, name:'Stussy Pigment', category:'상의', size:'L',   price:73000,  qty:1, date:'2025-09-10'},
+      {id:6, name:'Adidas Arsenal 2025/26 3rd', category:'상의', size:'L', price:180000, qty:1, date:'2025-09-19'},
     ];
 
-    // 2) URL에서 ?id= 읽기
     const params = new URLSearchParams(location.search);
     const id = Number(params.get('id'));
 
-    // 3) 데이터 찾기
     const item = ITEMS.find(x => x.id === id);
 
-    // 4) 렌더링
     const detail = document.getElementById('detail');
     const editBtn = document.getElementById('editBtn');
 
-    if (!item) {
-      detail.innerHTML = `
-        <div class="alert alert-warning mb-0">해당 상품을 찾을 수 없습니다. 목록에서 다시 선택해주세요.</div>
-      `;
-      editBtn.classList.add('disabled');
-      editBtn.setAttribute('aria-disabled','true');
-    } else {
-      // 가격 포맷
-      const priceText = '₩ ' + item.price.toLocaleString('ko-KR');
+    
 
-      detail.innerHTML = `
-        <dl class="row mb-0">
-          <dt class="col-sm-3">상품명</dt><dd class="col-sm-9">${item.name}</dd>
-          <dt class="col-sm-3">카테고리</dt><dd class="col-sm-9">${item.category}</dd>
-          <dt class="col-sm-3">사이즈</dt><dd class="col-sm-9">${item.size}</dd>
-          <dt class="col-sm-3">가격</dt><dd class="col-sm-9">${priceText}</dd>
-          <dt class="col-sm-3">수량</dt><dd class="col-sm-9">${item.qty}</dd>
-          <dt class="col-sm-3">담은 날짜</dt><dd class="col-sm-9">${item.date}</dd>
-        </dl>
-      `;
-
-      // Edit도 같은 id로 이동(형태만)
-      editBtn.href = `./edit.html?id=${item.id}`;
-    }
-
-    // 5) Delete: confirm 후 목록으로
     document.getElementById('deleteBtn').addEventListener('click', () => {
       if (confirm('게시물을 삭제할까요?')) {
         location.href = '../index.html';
