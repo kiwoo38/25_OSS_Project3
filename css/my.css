@@ -1,0 +1,112 @@
+:root {
+  --gap-sm: 8px;
+  --gap-md: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-sm);
+}
+
+.company {
+
+  font-size: 1.75rem;
+}
+
+.topmenu {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;  
+}
+
+.function {
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.function .form-select,
+.function .form-control {
+  width: 100%;
+  max-width: 100%;
+}
+
+.function .btn,
+.function .add-btn {
+  width: 100%; 
+}
+
+
+.btn-icon img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+#detail .card {
+  width: 100%;
+}
+
+.table-wrap, .table-responsive {
+  overflow-x: auto;
+}
+table th, table td {
+  white-space: nowrap;
+}
+
+
+@media (max-width: 576px) {
+  .header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .company {
+    font-size: 1.5rem; 
+    line-height: 1.1;
+  }
+  .page-title {
+    font-size: 1.125rem;
+  }
+
+  table thead th:nth-child(3),
+  table tbody td:nth-child(3),
+  table thead th:nth-child(6),
+  table tbody td:nth-child(6) {
+    display: none;
+  }
+
+  #detail .card {
+    box-shadow: none;   
+  }
+  .list-group-item {
+    font-size: 0.95rem;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .header {
+    flex-direction: row;   
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-md);
+  }
+  .company {
+    font-size: 2rem;
+  }
+  .topmenu {
+    gap: 16px;
+  }
+
+  .function .form-select { width: 180px; }
+  .function .form-control { width: 220px; }
+  .function .btn,
+  .function .add-btn { width: auto; }
+  
+  #detail .card {
+    max-width: 720px;
+  }
+}
