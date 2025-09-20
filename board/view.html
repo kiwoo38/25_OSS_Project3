@@ -9,9 +9,9 @@
 </head>
 <body class="bg-light">
 
-  <div class="header container py-4">
-    <div class="company fw-bold fs-1">Kream</div>
-    <div class="topmenu d-flex gap-4">
+  <div class="header container py-3">
+    <div class="company fw-bold fs-4">Kream</div>
+    <div class="topmenu d-flex gap-3">
       <a href="../index.html" class="link-secondary link-dark text-decoration-none">Home</a>
       <a class="link-secondary link-dark text-decoration-none" href="#">Style</a>
       <a class="link-primary link-dark text-decoration-none fw-semibold" href="#">Shop</a>
@@ -19,18 +19,24 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-4">
-      <h1 class="page-title h4 mb-2 mb-sm-0">Cart Detail</h1>
-      <div class="ms-sm-auto d-flex flex-wrap gap-2 pe-sm-1">
-        <a class="btn btn-info text-white" href="../index.html">목록</a>
-        <a class="btn btn-primary" id="editBtn" href="./edit.html">Edit</a>
-        <button class="btn btn-danger" id="deleteBtn">Delete</button>
-      </div>
+  <div class="container my-4">
+    <div class="row mb-3">
+        <div class="col-12 col-md-8 col-lg-6 mx-auto d-flex justify-content-between align-items-center gap-2 flex-wrap">
+            <h1 class="h4 mb-0">Cart Detail</h1>
+            <div class="d-flex flex-wrap gap-1 gap-sm-2">
+            <a class="btn btn-info text-white btn-sm" href="../index.html">목록</a>
+            <a class="btn btn-primary btn-sm" id="editBtn" href="./edit.html">Edit</a>
+            <button class="btn btn-danger btn-sm" id="deleteBtn">Delete</button>
+            </div>
+        </div>
     </div>
 
-    <div id="detail"></div>
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-6 mx-auto" id="detail"></div>
   </div>
+
+</div>
+
 
   <script>
     const ITEMS = [
@@ -53,7 +59,7 @@
     const priceText = '₩ ' + item.price.toLocaleString('ko-KR');
 
     detail.innerHTML = `
-    <div class="card" style="max-width:32rem;">
+    <div class="card w-100">
         <div class="card-header fw-semibold">상품 상세</div>
         <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex justify-content-between">
