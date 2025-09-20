@@ -9,9 +9,9 @@
 </head>
 <body class="bg-light">
 
-  <div class="header container py-3">
-    <div class="company fw-bold fs-4">Kream</div>
-    <div class="topmenu d-flex gap-3">
+  <div class="header container py-4">
+    <div class="company fw-bold fs-1">Kream</div>
+    <div class="topmenu d-flex gap-4">
       <a href="../index.html" class="link-secondary link-dark text-decoration-none">Home</a>
       <a class="link-secondary link-dark text-decoration-none" href="#">Style</a>
       <a class="link-primary link-dark text-decoration-none fw-semibold" href="#">Shop</a>
@@ -20,19 +20,16 @@
   </div>
 
   <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h1 class="page-title h4 mb-0">Cart Detail</h1>
-      <div class="d-flex gap-1">
+    <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-4">
+      <h1 class="page-title h4 mb-2 mb-sm-0">Cart Detail</h1>
+      <div class="ms-sm-auto d-flex flex-wrap gap-2 pe-sm-1">
         <a class="btn btn-info text-white" href="../index.html">목록</a>
         <a class="btn btn-primary" id="editBtn" href="./edit.html">Edit</a>
         <button class="btn btn-danger" id="deleteBtn">Delete</button>
       </div>
     </div>
 
-    <div class="card shadow-sm">
-      <div class="card-body" id="detail">
-      </div>
-    </div>
+    <div id="detail"></div>
   </div>
 
   <script>
@@ -45,30 +42,49 @@
       {id:6, name:'Adidas Arsenal 2025/26 3rd', category:'상의', size:'L', price:180000, qty:1, date:'2025-09-19'},
     ];
 
-    const params = new URLSearchParams(location.search);
-    const id = Number(params.get('id'));
+    const searchid = new URLSearchParams(location.search);
+    const id = Number(searchid.get('id'));
 
     const item = ITEMS.find(x => x.id === id);
 
     const detail = document.getElementById('detail');
     const editBtn = document.getElementById('editBtn');
     
-      const priceText = '₩ ' + item.price.toLocaleString('ko-KR');
+    const priceText = '₩ ' + item.price.toLocaleString('ko-KR');
 
     detail.innerHTML = `
-        <dl class="row mb-0">
-          <dt class="col-sm-3">상품명</dt><dd class="col-sm-9">${item.name}</dd>
-          <dt class="col-sm-3">카테고리</dt><dd class="col-sm-9">${item.category}</dd>
-          <dt class="col-sm-3">사이즈</dt><dd class="col-sm-9">${item.size}</dd>
-          <dt class="col-sm-3">가격</dt><dd class="col-sm-9">${priceText}</dd>
-          <dt class="col-sm-3">수량</dt><dd class="col-sm-9">${item.qty}</dd>
-          <dt class="col-sm-3">담은 날짜</dt><dd class="col-sm-9">${item.date}</dd>
-        </dl>
-      `;
+    <div class="card" style="max-width:32rem;">
+        <div class="card-header fw-semibold">상품 상세</div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between">
+            <span>상품명</span>
+            <span class="fw-semibold text-break">${item.name}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>카테고리</span>
+            <span class="ms-3">${item.category}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>사이즈</span>
+            <span class="ms-3">${item.size}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>가격</span>
+            <span class="ms-3">${priceText}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>수량</span>
+            <span class="ms-3">${item.qty}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>담은 날짜</span>
+            <span class="ms-3">${item.date}</span>
+        </li>
+        </ul>
+    </div>
+    `;
 
-      editBtn.href = `./edit.html?id=${item.id}`;
-
-    
+    editBtn.href= `./edit.html?id=${item.id}`;
 
     document.getElementById('deleteBtn').addEventListener('click', () => {
       if (confirm('게시물을 삭제할까요?')) {
